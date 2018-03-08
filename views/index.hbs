@@ -1,0 +1,31 @@
+
+
+{{!-- {{session.cart.totalQty}} --}}
+
+<div class="grid-container pt-5 pb-5">
+  {{# each products}}
+  <div>
+    <div class="card ">
+      <img class="card-img-top" src="{{this.imagePath}}" alt="">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{this.title}}
+        </h5>
+        <p class="card-text">
+          {{this.description}}
+        </p>
+      <div class="row clearfix">
+        <div class="col-sm-6 clearfix">
+          <h4>Price: <br> Rs.{{this.price}}</h4>
+        </div>
+        <div class="col-sm-6 text-center">
+          {{!-- <button class="btn btn-success pull-rigth">add To Cart</button> --}}
+          <a href="/add-to-cart/{{this._id}}" class="btn btn-success pull-right">add-to-cart</a>
+
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>

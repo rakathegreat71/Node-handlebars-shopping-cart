@@ -1,0 +1,34 @@
+{{#if isCartEmpty}}
+<div class="title mt-5">
+    <h1 class="text-center">No items in cart!</h1>
+</div>
+{{else}}
+<div class="text-center mt-4">
+    <h2>Welcome to checkout page</h2>
+</div>        
+<div class="container mt-5">
+ {{#each cart_items}}
+    <div class="breadcrumb text-center">
+        <h5 class="my-0 pt-2" style = "align-items:center">{{this.item.title}} <span class="badge badge-primary">Rs.{{this.price}}</span></h5>
+        <div class=" ml-2 dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                Remove
+            </button>
+            <div class="dropdown-menu bg-default" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/reduceByOne/{{this.item._id}}">reduceByOne</a>
+                <hr>
+                <a class="dropdown-item" href="/Remove/{{this.item._id}}">Remove</a>
+            </div>
+        </div>
+        <h5 class="ml-auto"><span class="badge badge-pill badge-warning">{{this.qty}}units</span></h5>
+    </div>
+ {{/each }}
+<h4 class="mt-5">Total:     Rs.{{session.cart.totalPrice}}</h4>
+<a href="/removeAll" class="btn btn-danger">Remove All Items</a>
+
+<hr>
+<a href="/checkout" class="btn btn-success">checkout</a>
+</div>
+
+{{/if}}
